@@ -102,7 +102,7 @@ def webhook() -> Response:
             reply(note)
 
     if "nikola" in text.lower():
-        note = "cig time?"
+        note = "cig time anyone?"
         if not app.debug:
             reply(note)       
 
