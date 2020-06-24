@@ -1,0 +1,11 @@
+MERCY_THRESHOLD = 4
+MIN_SCORE_TO_WIN = 7
+WIN_BY = 2
+NUM_PLAYERS = 4
+NUM_TEAMS = 2
+K = 32
+LEADERBOARD_DISPLAY = 15
+LEADERBOARD_GAMES = 3
+ERR = "Error: command must be of the form\n/[command] @[mentions], [args]\n"
+URL = "https://api.heroku.com/apps/snappa-groupme-leaderboard/config-vars"
+SCORE_CMD = "score"
