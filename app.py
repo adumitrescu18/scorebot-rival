@@ -53,124 +53,58 @@ def webhook() -> Response:
 
     sender: str = message.get('sender_id', None)
     text: str = message.get('text', None)
-    print(message)
 
-    # Ignore messages sent from the bot.
-    # if sender_is_bot(message):
-    #     return 'ok', 200
-    # commands = []
 
-    # if text.startswith(gm.RECORD_SCORE):
-    #     if sender not in admin:
-    #         commands.append(ScoreCommand(message, check=True))
-    #     else:
-    #         commands.append(ScoreCommand(message))
-    # elif text.startswith(gm.PARTNER):
-    #     commands.append(PartnerCommand(message))
-    # elif (text.startswith(gm.LEADERBOARD) or
-    #       text.startswith(gm.LB)):
-    #     commands.append(LeaderboardCommand(message))
-    # elif (text.startswith(gm.ADMIN_VERIFY)) and sender in admin:
-    #     messages = get_messages_before_id(message.get('id'))
-    #     messages = filter_messages_for_scores(messages)
-    #     for msg in messages:
-    #         commands.append(ScoreCommand(msg))
-    #     if len(messages) == 0:
-    #         resp = "No `/score` messages in the last 20 messages."
-    #         print(resp)
-    #         if not app.debug:
-    #             reply(resp)
-    # elif (text.startswith(gm.BOTCH)):
-    #     commands.append(BotchCommand(message) if sender in admin else
-    #                     BotchCommand(message, admin=False))
-    # elif (text.startswith(gm.UNBOTCH)):
-    #     commands.append(BotchCommand(message, unbotch=True) if sender in admin
-    #                     else BotchCommand(message, unbotch=True, admin=False))
-    # elif (text.startswith(gm.STRIKE)):
-    #     commands.append(StrikeCommand(message) if sender in admin else
-    #                     StrikeCommand(message, admin=False))
-    # elif (text.startswith(gm.HELP_V)):
-    #     commands.append(HelpCommand(message, verbose=True))
-    # elif (text.startswith(gm.HELP)):
-    #     commands.append(HelpCommand(message))
-    # elif (text.startswith(gm.ADD_USER)):
-    #     command = AddCommand(message) if sender in admin else\
-    #         AddCommand(message, admin=False)
-    #     commands.append(command)
-    # elif (text.startswith(gm.SB)):
-    #     commands.append(ScoreboardCommand(message))
-    # elif (text.startswith(gm.REFRESH)) and sender in admin:
-    #     commands.append(RefreshCommand(message))
-    # if gm.BOT_NAME in text.lower():
-    #     note = "this is a test"
-    #     print(note)
-    #     if not app.debug:
-    #         reply(note)
-    if text.lower() == "alright you guys can start now":
-        
-        time.sleep(4)
-        note = "Hi! My name is Chris, who are you guys thinking of? I personnally liked Stevens a lot. The info said he was the dean of a large school, and he's nationally recognized for research in information technology. Sounds like he's the best."
-        print(note)
-        if not app.debug:
-            reply(note)
-        
+    if sender_is_bot(message):
+        return 'ok', 200
+    commands = []
 
-    if "not" in text.lower() and "stevens" in text.lower() and "choice" in text.lower():
-        time.sleep(4)
-        list_of_replies = ["What makes you say that?", "Why do you think that?", "Can you explain that a bit more? "]
-
-        index = round(random.randint(0,2))
+    if "scorebot" in text.lower():
+        replies = ["This man is clueless", 
+        "he probably smells like dirty laundry", 
+        "His rule is coming to an end", "He doesn't even know what tiktok is", 
+        "I bet Charchut is proud of him and thats just sad"]
+        index = round(random.randint(0,3))
         note = list_of_replies[index]
         if not app.debug:
             reply(note)
-    if "i read that although" in text.lower():
-        time.sleep(4)
-        note = "I'm not sure about Roberts. Stevens was my #1, but Roberts does have good attributes as well."
-        print(note)
+    if "sebastian" in text.lower():
+        replies = ["I mean he can't even play snappa without Lauren's permission", 
+        "He definitely has the cheese touch", 
+        "If you've ever heard the words nakey and time in the same sentence I feel bad for you", 
+        "Is it 9 pm yet? because it might be time for him to go to bed", 
+        "Have you ever seen anyone else wear a towel as high as he does?",
+        "I bet he uses mayonaise as toothpaste"]
+        index = round(random.randint(0,5))
+        note = list_of_replies[index]
         if not app.debug:
             reply(note)
-        time.sleep(12)
-        note = "My concern is that he doesn't have experience with on-campus issues. He has not worked in higher education in 6 years, and he also wasn't prepared during the presentation portion of the selection process. So I'm not a fan of Roberts, but at the same time he could be a solid option."
-        print(note)
-        if not app.debug:
-            reply(note)
-    
-    if  "him as a candidate" in text.lower() and "jones" in text.lower():
-        note = "Jones is my least favorite candidate."
-        print(note)
-        if not app.debug:
-            reply(note)
-        time.sleep(16)
-        note = "He may be pleasant in social settings, but his colleagues say he has a flaring temper and also an abrasive leadership style. I don't think that fits with a leader at a university."
-        print(note)
-        if not app.debug:
-            reply(note)
-
-    if "set on your choice" in text.lower() or "ok" in text.lower() and "selecting another" in text.lower():
-        note = "I'm ok with another candidate, but I really do prefer Stevens."
-        print(note)
-        if not app.debug:
-            reply(note)
-    if "is that an ok compromise" in text.lower():
-        note = "K."
-        print(note)
+    if "tommy" in text.lower():
+        replies = ["Tommy definitely loves Kopstein more than Elena", 
+        "Hey Tommy bud why dont you break another mug", 
+        "Do you think he taps his ring to compensate?", 
+        "Respect the drip Karen", 
+        "No one cared who he was until he put on the banana suit"]
+        index = round(random.randint(0,4))
+        note = list_of_replies[index]
         if not app.debug:
             reply(note)
 
-    # else:
-    #     note = "I don't know."
-    #     print(note)
-    #     if not app.debug:
-    #         reply(note)
+    if "bo" in text.lower():
+        replies = ["If Bo ever gets married its going to be to a white claw or a mcgnugget", 
+        "Bo looks like the kind of guy to talk about his stock portfolio on a date", 
+        "Will he ever get a new haircut", 
+        "remeber when bo had a child growing on his eye?", 
+        "Bo once said that Andrei looks like a bacon egg and cheese Mcgriddle and I think about that a lot"]
+        index = round(random.randint(0,4))
+        note = list_of_replies[index]
+        if not app.debug:
+            reply(note)
 
-    # if time.time() - x >= 10 and x != 0:
-    #     x = time.time() + 1000000
-    #     note = "It seems like we have enough info to make a decision. We don't have much time left, so can everyone say who their top choice is now? I'm personally gonna stick with Stevens"
-    #     print(note)
-    #     if not app.debug:
-    #         reply(note)
-
-
+    if "nikola" in text.lower():
+        note = "cig time?"
+        if not app.debug:
+            reply(note)       
 
 
 
